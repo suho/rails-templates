@@ -23,8 +23,6 @@ def apply_template!(template_root)
 
   delete_test_folder
 
-  directory '.github'
-
   template 'Gemfile.tt', force: true
 
   copy_file '.flayignore'
@@ -58,6 +56,7 @@ def apply_template!(template_root)
   # Add-ons - [Default]
   apply '.template/addons/docker/template.rb'
   apply '.template/addons/heroku/template.rb'
+  apply '.template/addons/github/template.rb'
   apply '.template/addons/semaphore/template.rb'
 
   # Variants
