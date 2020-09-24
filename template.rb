@@ -57,7 +57,9 @@ def apply_template!(template_root)
   # Add-ons - [Default]
   apply '.template/addons/docker/template.rb'
   apply '.template/addons/semaphore/template.rb'
-
+  
+  apply '.template/addons/phrase_app/template.rb' if yes?("Whould you like to adding PhraseApp configuration?")
+  
   # Variants
   apply '.template/variants/api/template.rb' if API_VARIANT
   apply '.template/variants/web/template.rb' if WEB_VARIANT
