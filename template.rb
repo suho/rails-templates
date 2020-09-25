@@ -63,9 +63,14 @@ def apply_template!(template_root)
   # Also on CI, we try to apply all addons so the test can run for all addons
   if ENV['CI']
     apply '.template/addons/phrase_app/template.rb' 
+    apply '.template/addons/nginx/template.rb' 
   else
     if yes?("Would you like to add PhraseApp configuration?")
       apply '.template/addons/phrase_app/template.rb' 
+    end
+    
+    if yes?("Would you like to add Nginx configuration?")
+      apply '.template/addons/nginx/template.rb' 
     end
   end
   

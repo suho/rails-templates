@@ -14,6 +14,7 @@ base_spec = spec/base/**/*_spec.rb,spec/addons/docker/**/*_spec.rb
 test:
 	cd $(APP_NAME) && \
 	docker-compose -f docker-compose.test.yml up --detach db redis && \
+	docker-compose -f docker-compose.test.yml run test nginx -c /etc/nginx/conf.d/default.conf -t && \
 	docker-compose -f docker-compose.test.yml run --detach test bin/start.sh && \
 	cd ../.template && \
 	bundle install; \
