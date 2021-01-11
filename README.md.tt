@@ -38,11 +38,7 @@ foreman start -f Procfile.dev
 
 Add the following build settings to run the tests in the Docker environment via Docker Compose (configuration in `docker-compose.test.yml`):
 
-* Configure the environment variable `BRANCH_TAG` to tag Docker images per branch:
-
-```sh
-export BRANCH_TAG=$SEMAPHORE_BRANCH_ID
-```
+* Configure the environment variable `BRANCH_TAG` to tag Docker images per branch
 
 Each branch needs to have its own Docker image to avoid build settings disparities and leverage Docker image caching.
 
@@ -78,10 +74,6 @@ docker push $DOCKER_IMAGE:$BRANCH_TAG
 docker-compose -f docker-compose.test.yml run test bin/bundle exec rake db:test:prepare
 ```
 
-#### Semaphore CI 2.0
-
-To setup the semaphore CI 2.0 for the project, please follow [this guideline](.semaphore/README.md)
-
 ### Test
 
 * Run all tests:
@@ -100,4 +92,4 @@ docker-compose -f docker-compose.test.yml run test bin/bundle exec spec [rspec-p
 - Add a bot (i.e. `team-nimblehq`) to this repository or to the organization. The bot requires permission level “Write” to be able to set a PR’s status.
 
 - Create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-from bot account with `public_repo` scope, and set it as `DANGER_GITHUB_API_TOKEN` secret on Semaphore Environment Settings.
+from bot account with `public_repo` scope, and set it as `DANGER_GITHUB_API_TOKEN` secret on Github Environment Settings.

@@ -30,7 +30,6 @@ def apply_template!(template_root)
   copy_file '.rubocop.yml'
   copy_file '.reek.yml'
 
-  copy_file '.semaphore.yml'
   template '.ruby-gemset.tt'
   template '.ruby-version.tt', force: true
   copy_file '.editorconfig'
@@ -57,7 +56,6 @@ def apply_template!(template_root)
   apply '.template/addons/docker/template.rb'
   apply '.template/addons/heroku/template.rb'
   apply '.template/addons/github/template.rb'
-  apply '.template/addons/semaphore/template.rb'
 
   # Variants
   apply '.template/variants/api/template.rb' if API_VARIANT
